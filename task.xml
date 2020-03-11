@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CATS version="1.11">
+    <Problem title="Кластеры в N-мерном пространстве" lang="ru" tlimit="5" mlimit="256"
+        inputFile="input.txt" outputFile="output.txt" author="Глушков В."
+        saveInputPrefix = "50B"
+        saveOutputPrefix = "50B"
+        saveAnswerPrefix = "50B">
+
+<!--        <Keyword code="alg.sorting"/>-->
+
+        <ProblemStatement>
+            <p>Студентка Саша выполняет лабораторную работу по предмету "Нейронные сети". Задание заключается в поиске кластеров точек в евклидовом прострастве размерности $N$.</p>
+        </ProblemStatement>
+
+        <InputFormat>
+                <p>Первая строка входного файла содержит число $N$ - размерность пространства, $M$ - количество точек, $P$ - минимальное число точек в кластере, $E$ - максимальное расстояние между соседними объектами одного кластера.</p>
+                <p>Следующие $M$ строк содержат $N$ чисел - координаты точек.</p>
+        </InputFormat>
+
+        <OutputFormat>
+                <p>Выходной файл должен содержать единственное число - количетсво кластеров.</p>
+        </OutputFormat>
+
+        <ProblemConstraints>
+                <p >$1 \le N \le 10$</p>
+                <p >$1 \le M \le 500$</p>
+                <p >$1 \le P \le 20$</p>
+                <p >$0 \l E \le 10e6$</p>
+        </ProblemConstraints>
+
+        <Import guid="std.nums" type="checker" />
+
+        <Sample rank="1"><SampleIn src="01.in"/><SampleOut src="01.out"/></Sample>
+        <Sample rank="2"><SampleIn src="02.in"/><SampleOut src="02.out"/></Sample>
+
+        <Solution name="solution" src="main.py"/>
+<!--        <Test rank="1-5"><In src="%0n.in"/><Out src="%0n.out"/></Test>-->
+
+        <!-- N M P E and min/max coords value-->
+        <Generator name="randGen" src="rand_gen.py" outputFile="input.txt" timeLimit="30"/>
+		<Test rank="3-55"><In use="randGen"/><Out use="solution"/></Test>
+
+		 <Test rank="3"><In param="2 010 01 0.5 -01.0 01.0"/></Test>
+		 <Test rank="4"><In param="2 050 10 1.0 -05.0 05.0"/></Test>
+		 <Test rank="5"><In param="2 100 15 1.5 -10.0 10.0"/></Test>
+		 <Test rank="6"><In param="2 200 20 2.0 -20.0 20.0"/></Test>
+         <Test rank="7"><In param="2 500 20 2.5 -50.0 50.0"/></Test>
+
+		 <Test rank="8"><In param="3 100 10 3.0 -30.00 30.00"/></Test>
+         <Test rank="9"><In param="3 200 10 3.5 -50.00 50.00"/></Test>
+        <Test rank="10"><In param="3 300 15 4.0 -70.00 70.00"/></Test>
+        <Test rank="11"><In param="3 400 20 4.5 -100.0 100.0"/></Test>
+        <Test rank="12"><In param="3 500 20 5.0 -100.0 100.0"/></Test>
+
+        <Test rank="13"><In param="4 300 10 40.0 -30.00 30.00"/></Test>
+		<Test rank="14"><In param="4 400 10 45.0 -50.00 50.00"/></Test>
+		<Test rank="15"><In param="4 500 15 50.0 -70.00 70.00"/></Test>
+		<Test rank="16"><In param="4 100 20 55.0 -100.0 100.0"/></Test>
+        <Test rank="17"><In param="4 200 20 60.0 -100.0 100.0"/></Test>
+
+        <Test rank="21"><In param="5 100 10 100.0 -30.00 30.00"/></Test>
+        <Test rank="22"><In param="5 200 10 110.0 -50.00 50.00"/></Test>
+        <Test rank="23"><In param="5 300 15 115.0 -70.00 70.00"/></Test>
+		<Test rank="24"><In param="5 400 20 120.0 -100.0 100.0"/></Test>
+		<Test rank="25"><In param="5 500 20 125.0 -100.0 100.0"/></Test>
+
+		<Test rank="26"><In param="6 100 10 250.0 -30.00 30.00"/></Test>
+        <Test rank="27"><In param="6 200 10 260.0 -50.00 50.00"/></Test>
+		<Test rank="28"><In param="6 300 15 265.0 -70.00 70.00"/></Test>
+		<Test rank="29"><In param="6 400 20 270.0 -100.0 100.0"/></Test>
+		<Test rank="30"><In param="6 500 20 290.0 -100.0 100.0"/></Test>
+
+
+        <Test rank="31"><In param="7 100 10 600.0 -30.00 30.00"/></Test>
+        <Test rank="32"><In param="7 200 10 610.0 -50.00 50.00"/></Test>
+        <Test rank="33"><In param="7 300 15 615.0 -70.00 70.00"/></Test>
+		<Test rank="34"><In param="7 400 20 620.0 -100.0 100.0"/></Test>
+		<Test rank="35"><In param="7 500 20 630.0 -100.0 100.0"/></Test>
+
+		<Test rank="36"><In param="8 100 10 1500.0 -30.00 30.00"/></Test>
+        <Test rank="37"><In param="8 200 10 1550.0 -50.00 50.00"/></Test>
+		<Test rank="38"><In param="8 300 15 1600.0 -70.00 70.00"/></Test>
+		<Test rank="39"><In param="8 400 20 1650.0 -100.0 100.0"/></Test>
+		<Test rank="40"><In param="8 500 20 1700.0 -100.0 100.0"/></Test>
+
+
+        <Test rank="41"><In param="9 100 10 3800.0 -30.00 30.00"/></Test>
+        <Test rank="42"><In param="9 200 10 3850.0 -50.00 50.00"/></Test>
+        <Test rank="43"><In param="9 300 15 3900.0 -70.00 70.00"/></Test>
+		<Test rank="44"><In param="9 400 20 3950.0 -100.0 100.0"/></Test>
+		<Test rank="45"><In param="9 500 20 4000.0 -100.0 100.0"/></Test>
+
+		<Test rank="46"><In param="10 100 10 9500.0 -30.00 30.00"/></Test>
+        <Test rank="47"><In param="10 200 10 9600.0 -50.00 50.00"/></Test>
+		<Test rank="48"><In param="10 300 15 9700.0 -70.00 70.00"/></Test>
+		<Test rank="49"><In param="10 400 20 9800.0 -100.0 100.0"/></Test>
+		<Test rank="50"><In param="10 500 20 9900.0 -100.0 100.0"/></Test>
+        
+		<Testset name="full" tests="1-50"/>
+    </Problem>
+</CATS>
